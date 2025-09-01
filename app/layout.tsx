@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins, Bebas_Neue } from "next/font/google";
+import { Poppins, Bebas_Neue, Plus_Jakarta_Sans } from "next/font/google";
 import GaretBook from "next/font/local";
 import GaretHeavy from "next/font/local";
 
@@ -16,6 +16,12 @@ const bebasneue = Bebas_Neue({
   subsets: ["latin"],
   weight: "400",
 });
+
+const plusjakartasans = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarata-sans",
+  subsets: ["latin"],
+  weight: ["700"]
+})
 
 const garetbook = GaretBook({
   src: "../public/fonts/Garet-Book.otf",
@@ -41,7 +47,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.variable} ${bebasneue.variable} ${garetbook.variable} ${garetheavy.variable} antialiased`}
+        className={`${poppins.variable} ${bebasneue.variable} ${garetbook.variable} ${garetheavy.variable} ${plusjakartasans.variable} antialiased`}
       >
         {children}
       </body>

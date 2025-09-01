@@ -1,25 +1,24 @@
 import Image from "next/image";
-import { Send } from "lucide-react";
 
 export default function TopDestinations() {
   const destinations = [
     {
       id: 1,
-      image: "/images/top-destinations/Rectangle 14.png",
+      image: "/images/top-destinations/Rectangle-3.png",
       title: "Rome, Italy",
       price: "₹2,00,000/pax",
       duration: "10 Days Trip",
     },
     {
       id: 2,
-      image: "/images/top-destinations/Rectangle 14-1.png",
+      image: "/images/top-destinations/Rectangle-2.png",
       title: "London, UK",
       price: "₹3,20,000/pax",
       duration: "12 Days Trip",
     },
     {
       id: 3,
-      image: "/images/top-destinations/Rectangle 14-2.png",
+      image: "/images/top-destinations/Rectangle-1.png",
       title: "Full Europe",
       price: "₹12,00,000/pax",
       duration: "28 Days Trip",
@@ -28,8 +27,8 @@ export default function TopDestinations() {
 
   return (
     <section className="py-20 bg-primary">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-5xl md:text-6xl text-center text-white mb-14 font-garetheavy">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl md:text-6xl text-center text-white mb-20 font-garetheavy">
           Top Destinations
         </h2>
 
@@ -39,7 +38,7 @@ export default function TopDestinations() {
               key={destination.id}
               className="bg-white rounded-3xl shadow-[0_8px_24px_rgba(0,0,0,0.06)] overflow-hidden"
             >
-              <div className="relative h-80">
+              <div className="relative h-96">
                 <Image
                   src={destination.image}
                   alt={destination.title}
@@ -59,7 +58,12 @@ export default function TopDestinations() {
                 </div>
 
                 <div className="mt-4 flex items-center gap-2 text-slate-600">
-                  <Send className="w-4 h-4 text-primary -rotate-45" />
+                  <Image
+                    src="/icons/Navigation.svg"
+                    alt="navigation"
+                    width={18}
+                    height={18}
+                  />
                   <span className="text-[13px] md:text-[14px] font-light">
                     {destination.duration}
                   </span>

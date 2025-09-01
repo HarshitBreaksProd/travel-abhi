@@ -6,6 +6,7 @@ import CommunitySpotlight from "@/components/CommunitySpotlight";
 import WhyTravlAbhi from "@/components/WhyTravlAbhi";
 import OrganizerCTA from "@/components/OrganizerCTA";
 import Footer from "@/components/Footer";
+import Experiences from "@/components/Experiences";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <CommunitySpotlight />
       <WhyTravlAbhi />
       <OrganizerCTA />
+      <Experiences />
       <Footer />
     </main>
   );
