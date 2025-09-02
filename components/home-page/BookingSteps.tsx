@@ -3,19 +3,19 @@ import Image from "next/image";
 export default function BookingSteps() {
   const steps = [
     {
-      icon: "/images/easy-steps/curated-trips.svg",
+      icon: "/images/home/easy-steps/curated-trips.svg",
       title: "Browse Curated Trips",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus.",
     },
     {
-      icon: "/images/easy-steps/comunity-based.svg",
+      icon: "/images/home/easy-steps/comunity-based.svg",
       title: "Join Community-Based Groups",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus.",
     },
     {
-      icon: "/images/easy-steps/travel-share.svg",
+      icon: "/images/home/easy-steps/travel-share.svg",
       title: "Travel & Share Your Story",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus.",
@@ -56,7 +56,7 @@ export default function BookingSteps() {
           <div className="relative max-w-xl lg:max-w-none mx-auto">
             <div className="relative">
               <Image
-                src="/images/easy-steps/easysteps-img.png"
+                src="/images/home/easy-steps/easysteps-img.png"
                 alt="Easy steps illustration"
                 className="object-contain scale-110"
                 priority

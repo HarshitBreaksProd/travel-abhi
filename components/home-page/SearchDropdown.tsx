@@ -13,7 +13,7 @@ const DESTINATIONS = [
 ];
 
 export default function SearchDropdown() {
-  const [query, setQuery] = useState<string>("Spain");
+  const [query, setQuery] = useState<string>("");
   const [open, setOpen] = useState<boolean>(false);
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -80,7 +80,7 @@ export default function SearchDropdown() {
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => setOpen(true)}
           onKeyDown={onKeyDown}
-          placeholder="Spain"
+          placeholder="Destination..."
           className="ml-2 flex-1 bg-transparent outline-none font-garetheavy text-lg text-primary placeholder:text-gray-400"
           aria-autocomplete="list"
           aria-expanded={open}

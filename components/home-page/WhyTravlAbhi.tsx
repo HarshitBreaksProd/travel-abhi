@@ -4,28 +4,28 @@ export default function WhyTravlAbhi() {
   const features = [
     {
       id: 1,
-      icon: "/images/services/dish.svg",
+      icon: "/images/home/services/dish.svg",
       title: "Discover Your Preferences",
       description:
         "Find trips that match your interests and travel style with our smart recommendation system.",
     },
     {
       id: 2,
-      icon: "/images/services/airplane.svg",
+      icon: "/images/home/services/airplane.svg",
       title: "Global Destinations",
       description:
         "Explore destinations worldwide with our extensive network and local expertise.",
     },
     {
       id: 3,
-      icon: "/images/services/mic.svg",
+      icon: "/images/home/services/mic.svg",
       title: "Safe & Secure",
       description:
         "Travel with confidence knowing your safety and security are our top priorities.",
     },
     {
       id: 4,
-      icon: "/images/services/settings.svg",
+      icon: "/images/home/services/settings.svg",
       title: "Flexible Scheduling",
       description:
         "Plan your trips according to your schedule with our flexible booking options.",

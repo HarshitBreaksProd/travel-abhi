@@ -6,28 +6,28 @@ export default function CommunitySpotlight() {
       id: 1,
       name: "Mike's Story",
       description: "From a solo adventure to finding a travel buddy.",
-      image: "/images/spotlight/mark.png",
+      image: "/images/home/spotlight/mark.png",
       followers: "50.4k followers",
     },
     {
       id: 2,
       name: "Sarah's Adventure",
       description: "Discovering hidden gems across Southeast Asia.",
-      image: "/images/spotlight/sarah.png",
+      image: "/images/home/spotlight/sarah.png",
       followers: "42.3k followers",
     },
     {
       id: 3,
       name: "Friendships Found",
       description: "How travel brought lifelong friendships.",
-      image: "/images/spotlight/friendship-found.png",
+      image: "/images/home/spotlight/friendship-found.png",
       followers: "38.1k followers",
     },
     {
       id: 4,
       name: "Capturing Moments",
       description: "Through the lens of a travel photographer.",
-      image: "/images/spotlight/capturing-moments.png",
+      image: "/images/home/spotlight/capturing-moments.png",
       followers: "55.7k followers",
     },
   ];
@@ -55,9 +55,7 @@ export default function CommunitySpotlight() {
                 </div>
               </div>
               <div className="mt-4">
-                <h3 className="text-slate-900 md:text-xl">
-                  {traveler.name}
-                </h3>
+                <h3 className="text-slate-900 md:text-xl">{traveler.name}</h3>
                 <p className="text-neutral-500 leading-6 font-light text-sm md:text-base mt-1">
                   {traveler.description}
                 </p>

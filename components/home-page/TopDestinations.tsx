@@ -4,21 +4,21 @@ export default function TopDestinations() {
   const destinations = [
     {
       id: 1,
-      image: "/images/top-destinations/Rectangle-3.png",
+      image: "/images/home/top-destinations/Rectangle-3.png",
       title: "Rome, Italy",
       price: "₹2,00,000/pax",
       duration: "10 Days Trip",
     },
     {
       id: 2,
-      image: "/images/top-destinations/Rectangle-2.png",
+      image: "/images/home/top-destinations/Rectangle-2.png",
       title: "London, UK",
       price: "₹3,20,000/pax",
       duration: "12 Days Trip",
     },
     {
       id: 3,
-      image: "/images/top-destinations/Rectangle-1.png",
+      image: "/images/home/top-destinations/Rectangle-1.png",
       title: "Full Europe",
       price: "₹12,00,000/pax",
       duration: "28 Days Trip",

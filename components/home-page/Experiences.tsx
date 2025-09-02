@@ -2,11 +2,11 @@ import Image from "next/image";
 
 export default function Experiences() {
   const images = [
-    "/images/experiences/exp-0.png",
-    "/images/experiences/exp-1.png",
-    "/images/experiences/exp-2.png",
-    "/images/experiences/exp-3.png",
-    "/images/experiences/exp-4.png",
+    "/images/home/experiences/exp-0.png",
+    "/images/home/experiences/exp-1.png",
+    "/images/home/experiences/exp-2.png",
+    "/images/home/experiences/exp-3.png",
+    "/images/home/experiences/exp-4.png",
   ];
 
   return (
