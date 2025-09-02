@@ -60,15 +60,22 @@ export default function TripRow({ trip }: { trip: MyTrip }) {
                     a.type === "primary"
                       ? "bg-primary text-white px-4 py-2 rounded-md text-sm"
                       : "border border-slate-300 text-slate-800 px-4 py-2 rounded-md text-sm bg-white";
-                  const El = a.href ? Link : ("button" as any);
-                  return (
-                    <El
+                  return a.href ? (
+                    <Link
                       key={`${trip.id}-${idx}`}
-                      href={a.href as any}
+                      href={a.href}
                       className={className}
                     >
                       {a.label}
-                    </El>
+                    </Link>
+                  ) : (
+                    <button
+                      key={`${trip.id}-${idx}`}
+                      type="button"
+                      className={className}
+                    >
+                      {a.label}
+                    </button>
                   );
                 })}
               </div>

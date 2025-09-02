@@ -165,7 +165,7 @@ export default function TripDetailsPage() {
             <section className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-10">
               <div>
                 <h3 className="font-garetheavy text-slate-900 text-lg mb-3">
-                  What's included
+                  What&apos;s included
                 </h3>
                 <ul className="space-y-3">
                   {data.inclusions.map((x) => (
@@ -178,7 +178,7 @@ export default function TripDetailsPage() {
               </div>
               <div>
                 <h3 className="font-garetheavy text-slate-900 text-lg mb-3">
-                  What's not included
+                  What&apos;s not included
                 </h3>
                 <ul className="space-y-3">
                   {data.exclusions.map((x) => (
