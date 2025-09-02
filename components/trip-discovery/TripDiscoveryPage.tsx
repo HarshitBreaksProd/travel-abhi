@@ -22,6 +22,8 @@ const CITIES: CityOption[] = [
 const CATEGORIES: CategoryOption[] = [
   { label: "Adventure", value: "adventure" },
   { label: "Culture", value: "culture" },
+  { label: "Food", value: "food" },
+  { label: "History", value: "history" },
 ];
 
 const ALL_TRIPS: Trip[] = [
@@ -33,6 +35,7 @@ const ALL_TRIPS: Trip[] = [
     priceInInr: 62000,
     durationDays: 5,
     imageUrl: "/images/trip-discovery/kyoto.png",
+    category: "culture",
   },
   {
     id: "barcelona",
@@ -42,6 +45,7 @@ const ALL_TRIPS: Trip[] = [
     priceInInr: 54000,
     durationDays: 6,
     imageUrl: "/images/trip-discovery/barcelona.png",
+    category: "history",
   },
   {
     id: "paris",
@@ -51,6 +55,7 @@ const ALL_TRIPS: Trip[] = [
     priceInInr: 70000,
     durationDays: 4,
     imageUrl: "/images/trip-discovery/paris.png",
+    category: "food",
   },
   {
     id: "rome",
@@ -60,6 +65,7 @@ const ALL_TRIPS: Trip[] = [
     priceInInr: 61000,
     durationDays: 5,
     imageUrl: "/images/trip-discovery/rome.png",
+    category: "history",
   },
   {
     id: "delhi",
@@ -69,6 +75,7 @@ const ALL_TRIPS: Trip[] = [
     priceInInr: 11000,
     durationDays: 3,
     imageUrl: "/images/trip-discovery/paris.png",
+    category: "adventure",
   },
   {
     id: "brazil",
@@ -78,6 +85,7 @@ const ALL_TRIPS: Trip[] = [
     priceInInr: 36000,
     durationDays: 5,
     imageUrl: "/images/trip-discovery/kyoto.png",
+    category: "adventure",
   },
 ];
 
@@ -101,7 +109,9 @@ export default function TripDiscoveryPage() {
       const byBudget = t.priceInInr >= budget[0] && t.priceInInr <= budget[1];
       const byDuration =
         t.durationDays >= duration[0] && t.durationDays <= duration[1];
-      const byCategory = selectedCategory ? true : true; // UI-only placeholder
+      const byCategory = selectedCategory
+        ? t.category === selectedCategory
+        : true;
       return byCity && byBudget && byDuration && byCategory;
     });
     return filtered;
@@ -129,13 +139,25 @@ export default function TripDiscoveryPage() {
               cities={CITIES}
               categories={CATEGORIES}
               selectedCity={selectedCity}
-              onCityChange={setSelectedCity}
+              onCityChange={(v) => {
+                setPage(1);
+                setSelectedCity(v);
+              }}
               selectedCategory={selectedCategory}
-              onCategoryChange={setSelectedCategory}
+              onCategoryChange={(v) => {
+                setPage(1);
+                setSelectedCategory(v);
+              }}
               budget={budget}
-              onBudgetChange={setBudget}
+              onBudgetChange={(v) => {
+                setPage(1);
+                setBudget(v);
+              }}
               duration={duration}
-              onDurationChange={setDuration}
+              onDurationChange={(v) => {
+                setPage(1);
+                setDuration(v);
+              }}
             />
           </aside>
 

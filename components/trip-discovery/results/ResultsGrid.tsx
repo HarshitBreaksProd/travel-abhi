@@ -9,6 +9,7 @@ export type Trip = {
   priceInInr: number;
   durationDays: number;
   imageUrl: string;
+  category?: string;
 };
 
 export default function ResultsGrid({ trips }: { trips: Trip[] }) {
