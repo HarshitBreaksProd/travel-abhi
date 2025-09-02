@@ -18,6 +18,7 @@ export default function FiltersSidebar({
   onBudgetChange,
   duration,
   onDurationChange,
+  onDatesChange,
 }: {
   cities: CityOption[];
   categories: CategoryOption[];
@@ -29,6 +30,7 @@ export default function FiltersSidebar({
   onBudgetChange: (v: Range) => void;
   duration: Range;
   onDurationChange: (v: Range) => void;
+  onDatesChange?: (start: string, end: string) => void;
 }) {
   const cityId = useId();
   const categoryId = useId();
@@ -77,7 +79,10 @@ export default function FiltersSidebar({
           <input
             type="date"
             value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
+            onChange={(e) => {
+              setStartDate(e.target.value);
+              onDatesChange?.(e.target.value, endDate);
+            }}
             className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary"
             aria-label="Start date"
           />
@@ -85,7 +90,10 @@ export default function FiltersSidebar({
           <input
             type="date"
             value={endDate}
-            onChange={(e) => setEndDate(e.target.value)}
+            onChange={(e) => {
+              setEndDate(e.target.value);
+              onDatesChange?.(startDate, e.target.value);
+            }}
             className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary"
             aria-label="End date"
           />

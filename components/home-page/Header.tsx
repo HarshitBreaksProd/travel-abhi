@@ -22,7 +22,7 @@ export default function Header() {
           {/* Logo */}
           <div className="flex items-center">
             <Image
-              src={"/images/home/logo.png"}
+              src={"/images/logo.png"}
               alt="TravlAbhi"
               width={120}
               height={120}

@@ -10,6 +10,8 @@ export type Trip = {
   durationDays: number;
   imageUrl: string;
   category?: string;
+  startDate?: string; // ISO with timezone
+  endDate?: string; // ISO with timezone
 };
 
 export default function ResultsGrid({ trips }: { trips: Trip[] }) {

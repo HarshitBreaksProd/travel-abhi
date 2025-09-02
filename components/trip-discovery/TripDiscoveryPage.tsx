@@ -17,6 +17,8 @@ const CITIES: CityOption[] = [
   { label: "Barcelona", value: "barcelona" },
   { label: "Paris", value: "paris" },
   { label: "Rome", value: "rome" },
+  { label: "Delhi", value: "delhi" },
+  { label: "Brazil", value: "brazil" },
 ];
 
 const CATEGORIES: CategoryOption[] = [
@@ -36,6 +38,8 @@ const ALL_TRIPS: Trip[] = [
     durationDays: 5,
     imageUrl: "/images/trip-discovery/kyoto.png",
     category: "culture",
+    startDate: "2025-03-01T00:00:00+05:30",
+    endDate: "2025-03-15T23:59:59+05:30",
   },
   {
     id: "barcelona",
@@ -46,6 +50,8 @@ const ALL_TRIPS: Trip[] = [
     durationDays: 6,
     imageUrl: "/images/trip-discovery/barcelona.png",
     category: "history",
+    startDate: "2025-04-10T00:00:00+05:30",
+    endDate: "2025-04-20T23:59:59+05:30",
   },
   {
     id: "paris",
@@ -56,6 +62,8 @@ const ALL_TRIPS: Trip[] = [
     durationDays: 4,
     imageUrl: "/images/trip-discovery/paris.png",
     category: "food",
+    startDate: "2025-05-05T00:00:00+05:30",
+    endDate: "2025-05-12T23:59:59+05:30",
   },
   {
     id: "rome",
@@ -66,6 +74,8 @@ const ALL_TRIPS: Trip[] = [
     durationDays: 5,
     imageUrl: "/images/trip-discovery/rome.png",
     category: "history",
+    startDate: "2025-06-01T00:00:00+05:30",
+    endDate: "2025-06-10T23:59:59+05:30",
   },
   {
     id: "delhi",
@@ -76,6 +86,8 @@ const ALL_TRIPS: Trip[] = [
     durationDays: 3,
     imageUrl: "/images/trip-discovery/paris.png",
     category: "adventure",
+    startDate: "2025-02-01T00:00:00+05:30",
+    endDate: "2025-02-05T23:59:59+05:30",
   },
   {
     id: "brazil",
@@ -86,6 +98,8 @@ const ALL_TRIPS: Trip[] = [
     durationDays: 5,
     imageUrl: "/images/trip-discovery/kyoto.png",
     category: "adventure",
+    startDate: "2025-07-10T00:00:00+05:30",
+    endDate: "2025-07-20T23:59:59+05:30",
   },
 ];
 
@@ -100,6 +114,14 @@ export default function TripDiscoveryPage() {
   const [duration, setDuration] = useState<DurationRange>([3, 6]);
   const [page, setPage] = useState<number>(1);
   const pageSize = 4;
+  const [startDateZ, setStartDateZ] = useState<string>("");
+  const [endDateZ, setEndDateZ] = useState<string>("");
+
+  const IST_OFFSET = "+05:30";
+  const toStartOfDayZoned = (yyyyMmDd: string) =>
+    yyyyMmDd ? `${yyyyMmDd}T00:00:00${IST_OFFSET}` : "";
+  const toEndOfDayZoned = (yyyyMmDd: string) =>
+    yyyyMmDd ? `${yyyyMmDd}T23:59:59${IST_OFFSET}` : "";
 
   const visibleTrips = useMemo(() => {
     const filtered = ALL_TRIPS.filter((t) => {
@@ -112,10 +134,22 @@ export default function TripDiscoveryPage() {
       const byCategory = selectedCategory
         ? t.category === selectedCategory
         : true;
-      return byCity && byBudget && byDuration && byCategory;
+      const byDates = (() => {
+        if (!startDateZ && !endDateZ) return true;
+        const tripStart = t.startDate ? new Date(t.startDate).getTime() : NaN;
+        const tripEnd = t.endDate ? new Date(t.endDate).getTime() : NaN;
+        const selStart = startDateZ
+          ? new Date(startDateZ).getTime()
+          : -Infinity;
+        const selEnd = endDateZ ? new Date(endDateZ).getTime() : Infinity;
+        if (Number.isNaN(tripStart) || Number.isNaN(tripEnd)) return true; // keep if data missing
+        // overlap check
+        return tripStart <= selEnd && tripEnd >= selStart;
+      })();
+      return byCity && byBudget && byDuration && byCategory && byDates;
     });
     return filtered;
-  }, [selectedCity, budget, duration, selectedCategory]);
+  }, [selectedCity, budget, duration, selectedCategory, startDateZ, endDateZ]);
 
   const totalPages = Math.max(1, Math.ceil(visibleTrips.length / pageSize));
   const clampedPage = Math.min(Math.max(1, page), totalPages);
@@ -157,6 +191,11 @@ export default function TripDiscoveryPage() {
               onDurationChange={(v) => {
                 setPage(1);
                 setDuration(v);
+              }}
+              onDatesChange={(s, e) => {
+                setPage(1);
+                setStartDateZ(toStartOfDayZoned(s));
+                setEndDateZ(toEndOfDayZoned(e));
               }}
             />
           </aside>
