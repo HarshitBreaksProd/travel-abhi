@@ -5,6 +5,35 @@ import SiteHeader from "@/components/common/SiteHeader";
 import { EVEREST_BASE_CAMP_TRIP } from ".";
 import { useState } from "react";
 
+function StarsAverage({ rating }: { rating: number }) {
+  const percent = Math.max(0, Math.min(100, (rating / 5) * 100));
+  return (
+    <div
+      className="relative inline-block leading-none"
+      aria-label={`${rating.toFixed(1)} out of 5`}
+    >
+      <div className="text-slate-300 select-none">★★★★★</div>
+      <div
+        className="absolute inset-0 overflow-hidden"
+        style={{ width: `${percent}%` }}
+      >
+        <div className="text-slate-900 select-none">★★★★★</div>
+      </div>
+    </div>
+  );
+}
+
+function StarsSolid({ rating }: { rating: number }) {
+  const full = Math.round(Math.max(0, Math.min(5, rating)));
+  const empty = 5 - full;
+  return (
+    <div className="leading-none" aria-label={`${rating} out of 5`}>
+      <span className="text-slate-900 select-none">{"★".repeat(full)}</span>
+      <span className="text-slate-300 select-none">{"★".repeat(empty)}</span>
+    </div>
+  );
+}
+
 export default function TripDetailsPage() {
   const data = EVEREST_BASE_CAMP_TRIP;
   const [openDays, setOpenDays] = useState<number[]>([]);
@@ -172,7 +201,10 @@ export default function TripDetailsPage() {
                   <div className="text-4xl font-garetheavy text-slate-900">
                     {data.reviewsSummary.average.toFixed(1)}
                   </div>
-                  <div className="text-xs text-slate-500">
+                  <div className="mt-2">
+                    <StarsAverage rating={data.reviewsSummary.average} />
+                  </div>
+                  <div className="mt-1 text-xs text-slate-500">
                     {data.reviewsSummary.totalCount} reviews
                   </div>
                   <div className="mt-3 space-y-2">
@@ -212,6 +244,9 @@ export default function TripDetailsPage() {
                             {r.dateIso}
                           </div>
                         </div>
+                      </div>
+                      <div className="mt-2">
+                        <StarsSolid rating={r.rating} />
                       </div>
                       <div className="mt-2 text-sm text-slate-700">
                         {r.content}
