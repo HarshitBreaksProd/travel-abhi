@@ -17,7 +17,7 @@ export default function TripDetailsPage() {
     <div className="min-h-screen bg-white">
       <SiteHeader />
 
-      <main className="mx-auto px-20 py-8">
+      <main className="mx-auto px-20 py-8 pb-28 lg:pb-8">
         {/* Hero + Sidebar CTA */}
         <div className="flex flex-col lg:flex-row lg:items-start gap-8">
           <div className="lg:flex-1">
@@ -275,7 +275,7 @@ export default function TripDetailsPage() {
           </div>
 
           <aside className="lg:pt-8 lg:basis-[320px] lg:w-[320px] lg:shrink-0 lg:self-start">
-            <div className="border rounded-md p-4 w-[320px] fixed top-24 right-20">
+            <div className="p-4 w-full bg-white fixed bottom-0 left-0 right-0 z-50 rounded-none border-t border-x-0 border-b-0 lg:fixed lg:top-24 lg:right-20 lg:left-auto lg:bottom-auto lg:w-[320px] lg:rounded-md lg:border lg:z-auto">
               <div className="text-2xl font-garetheavy text-slate-900">
                 ₹{data.priceInInr.toLocaleString("en-IN")}
               </div>
